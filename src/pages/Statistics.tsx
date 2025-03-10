@@ -1,7 +1,18 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BarChart, LineChart, PieChart, PieArcDatum } from '@/components/ui/chart';
+import { ChartContainer } from '@/components/ui/chart';
+import {
+  Bar,
+  BarChart as RechartsBarChart,
+  Line,
+  LineChart as RechartsLineChart,
+  Pie,
+  PieChart as RechartsPieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
+} from 'recharts';
 import { 
   Tabs, 
   TabsContent, 
@@ -27,7 +38,6 @@ const Statistics: React.FC = () => {
     }
   }, []);
 
-  // Prepare data for charts
   const categoryData = habits.reduce((acc, habit) => {
     acc[habit.category] = (acc[habit.category] || 0) + 1;
     return acc;
@@ -58,7 +68,6 @@ const Statistics: React.FC = () => {
     { name: 'Pending', value: habits.filter(h => !h.completed).length }
   ];
 
-  // Generate fake weekly data for line chart demonstration
   const generateWeeklyData = () => {
     const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     return daysOfWeek.map(day => {
@@ -101,10 +110,18 @@ const Statistics: React.FC = () => {
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="h-[200px]">
-                    <PieChart
-                      data={completionData}
-                      colors={['#8B5CF6', '#E5E7EB']}
-                    />
+                    <ResponsiveContainer width="100%" height="100%">
+                      <RechartsPieChart>
+                        <Pie
+                          data={completionData}
+                          dataKey="value"
+                          nameKey="name"
+                          fill="#8B5CF6"
+                          label
+                        />
+                        <Tooltip />
+                      </RechartsPieChart>
+                    </ResponsiveContainer>
                   </div>
                 </CardContent>
               </Card>
@@ -115,10 +132,18 @@ const Statistics: React.FC = () => {
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="h-[200px]">
-                    <PieChart
-                      data={categoryChartData}
-                      colors={['#8B5CF6', '#0EA5E9', '#F97316', '#D946EF']}
-                    />
+                    <ResponsiveContainer width="100%" height="100%">
+                      <RechartsPieChart>
+                        <Pie
+                          data={categoryChartData}
+                          dataKey="value"
+                          nameKey="name"
+                          fill="#0EA5E9"
+                          label
+                        />
+                        <Tooltip />
+                      </RechartsPieChart>
+                    </ResponsiveContainer>
                   </div>
                 </CardContent>
               </Card>
@@ -129,10 +154,18 @@ const Statistics: React.FC = () => {
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="h-[200px]">
-                    <PieChart
-                      data={frequencyChartData}
-                      colors={['#0EA5E9', '#F97316', '#D946EF']}
-                    />
+                    <ResponsiveContainer width="100%" height="100%">
+                      <RechartsPieChart>
+                        <Pie
+                          data={frequencyChartData}
+                          dataKey="value"
+                          nameKey="name"
+                          fill="#F97316"
+                          label
+                        />
+                        <Tooltip />
+                      </RechartsPieChart>
+                    </ResponsiveContainer>
                   </div>
                 </CardContent>
               </Card>
@@ -157,13 +190,14 @@ const Statistics: React.FC = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="h-[300px]">
-                      <BarChart
-                        data={streakData}
-                        index="name"
-                        categories={["value"]}
-                        colors={["#8B5CF6"]}
-                        yAxisWidth={30}
-                      />
+                      <ResponsiveContainer width="100%" height="100%">
+                        <RechartsBarChart data={streakData}>
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Bar dataKey="value" fill="#8B5CF6" />
+                        </RechartsBarChart>
+                      </ResponsiveContainer>
                     </div>
                   </CardContent>
                 </Card>
@@ -176,13 +210,14 @@ const Statistics: React.FC = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="h-[300px]">
-                      <LineChart
-                        data={weeklyData}
-                        index="name"
-                        categories={["Completed"]}
-                        colors={["#0EA5E9"]}
-                        yAxisWidth={30}
-                      />
+                      <ResponsiveContainer width="100%" height="100%">
+                        <RechartsLineChart data={weeklyData}>
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                          <Line type="monotone" dataKey="Completed" stroke="#0EA5E9" />
+                        </RechartsLineChart>
+                      </ResponsiveContainer>
                     </div>
                   </CardContent>
                 </Card>
