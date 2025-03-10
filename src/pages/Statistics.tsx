@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChartContainer } from '@/components/ui/chart';
 import {
   Bar,
-  BarChart as RechartsBarChart,
+  BarChart,
   Line,
-  LineChart as RechartsLineChart,
+  LineChart,
   Pie,
-  PieChart as RechartsPieChart,
+  PieChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
