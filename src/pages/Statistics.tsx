@@ -110,7 +110,7 @@ const Statistics: React.FC = () => {
                 <CardContent className="pt-0">
                   <div className="h-[200px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      <RechartsPieChart>
+                      <PieChart>
                         <Pie
                           data={completionData}
                           dataKey="value"
@@ -119,7 +119,7 @@ const Statistics: React.FC = () => {
                           label
                         />
                         <Tooltip />
-                      </RechartsPieChart>
+                      </PieChart>
                     </ResponsiveContainer>
                   </div>
                 </CardContent>
@@ -132,7 +132,7 @@ const Statistics: React.FC = () => {
                 <CardContent className="pt-0">
                   <div className="h-[200px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      <RechartsPieChart>
+                      <PieChart>
                         <Pie
                           data={categoryChartData}
                           dataKey="value"
@@ -141,7 +141,7 @@ const Statistics: React.FC = () => {
                           label
                         />
                         <Tooltip />
-                      </RechartsPieChart>
+                      </PieChart>
                     </ResponsiveContainer>
                   </div>
                 </CardContent>
@@ -154,7 +154,7 @@ const Statistics: React.FC = () => {
                 <CardContent className="pt-0">
                   <div className="h-[200px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      <RechartsPieChart>
+                      <PieChart>
                         <Pie
                           data={frequencyChartData}
                           dataKey="value"
@@ -163,7 +163,7 @@ const Statistics: React.FC = () => {
                           label
                         />
                         <Tooltip />
-                      </RechartsPieChart>
+                      </PieChart>
                     </ResponsiveContainer>
                   </div>
                 </CardContent>
@@ -190,12 +190,12 @@ const Statistics: React.FC = () => {
                   <CardContent>
                     <div className="h-[300px]">
                       <ResponsiveContainer width="100%" height="100%">
-                        <RechartsBarChart data={streakData}>
+                        <BarChart data={streakData}>
                           <XAxis dataKey="name" />
                           <YAxis />
                           <Tooltip />
                           <Bar dataKey="value" fill="#8B5CF6" />
-                        </RechartsBarChart>
+                        </BarChart>
                       </ResponsiveContainer>
                     </div>
                   </CardContent>
@@ -210,12 +210,12 @@ const Statistics: React.FC = () => {
                   <CardContent>
                     <div className="h-[300px]">
                       <ResponsiveContainer width="100%" height="100%">
-                        <RechartsLineChart data={weeklyData}>
+                        <LineChart data={weeklyData}>
                           <XAxis dataKey="name" />
                           <YAxis />
                           <Tooltip />
                           <Line type="monotone" dataKey="Completed" stroke="#0EA5E9" />
-                        </RechartsLineChart>
+                        </LineChart>
                       </ResponsiveContainer>
                     </div>
                   </CardContent>
