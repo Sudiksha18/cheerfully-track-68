@@ -1,13 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Plus, Search, UserPlus } from 'lucide-react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { useToast } from '@/components/ui/use-toast';
+import AuthenticatedLayout from '@/components/AuthenticatedLayout';
 
 interface TeamMember {
   id: string;
@@ -73,10 +72,8 @@ const Team: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      
-      <main className="flex-1 container py-8">
+    <AuthenticatedLayout>
+      <main className="container py-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold">Team</h1>
@@ -138,9 +135,7 @@ const Team: React.FC = () => {
           </Card>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </AuthenticatedLayout>
   );
 };
 

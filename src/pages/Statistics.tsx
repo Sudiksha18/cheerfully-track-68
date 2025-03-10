@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -24,8 +25,7 @@ import {
   PieChart as PieChartIcon 
 } from 'lucide-react';
 import { Habit } from '@/components/HabitItem';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import AuthenticatedLayout from '@/components/AuthenticatedLayout';
 
 const Statistics: React.FC = () => {
   const [habits, setHabits] = useState<Habit[]>([]);
@@ -81,10 +81,8 @@ const Statistics: React.FC = () => {
   const weeklyData = generateWeeklyData();
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      
-      <main className="flex-1 container py-8">
+    <AuthenticatedLayout>
+      <main className="container py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Statistics</h1>
           <p className="text-muted-foreground mt-1">
@@ -225,9 +223,7 @@ const Statistics: React.FC = () => {
           </div>
         )}
       </main>
-
-      <Footer />
-    </div>
+    </AuthenticatedLayout>
   );
 };
 

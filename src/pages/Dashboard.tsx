@@ -5,8 +5,7 @@ import { Plus } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { v4 as uuidv4 } from 'uuid';
 
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import AuthenticatedLayout from '@/components/AuthenticatedLayout';
 import HabitList from '@/components/HabitList';
 import HabitStats from '@/components/HabitStats';
 import AddHabitForm from '@/components/AddHabitForm';
@@ -120,10 +119,8 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      
-      <main className="flex-1 container py-8">
+    <AuthenticatedLayout>
+      <main className="container py-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold">Your Habits</h1>
@@ -160,9 +157,7 @@ const Dashboard: React.FC = () => {
           onUpdateHabit={handleUpdateHabit}
         />
       </main>
-
-      <Footer />
-    </div>
+    </AuthenticatedLayout>
   );
 };
 

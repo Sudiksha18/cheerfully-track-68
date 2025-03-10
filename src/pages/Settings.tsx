@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,8 +9,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { toast } from '@/components/ui/use-toast';
 import { Separator } from '@/components/ui/separator';
 import { UserCircle, Bell, Shield, Trash2 } from 'lucide-react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import AuthenticatedLayout from '@/components/AuthenticatedLayout';
 
 const Settings: React.FC = () => {
   const [name, setName] = useState('John Doe');
@@ -38,10 +36,8 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      
-      <main className="flex-1 container py-8">
+    <AuthenticatedLayout>
+      <main className="container py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Settings</h1>
           <p className="text-muted-foreground mt-1">
@@ -236,9 +232,7 @@ const Settings: React.FC = () => {
           </TabsContent>
         </Tabs>
       </main>
-
-      <Footer />
-    </div>
+    </AuthenticatedLayout>
   );
 };
 
