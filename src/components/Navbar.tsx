@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -9,7 +8,8 @@ import {
   Menu, 
   X,
   LogOut,
-  User
+  User,
+  Users
 } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useToast } from '@/hooks/use-toast';
@@ -19,6 +19,7 @@ import { useAuth } from '@/context/AuthContext';
 const NavItems = [
   { title: 'Dashboard', href: '/dashboard', icon: <LayoutDashboard className="h-5 w-5" /> },
   { title: 'Statistics', href: '/statistics', icon: <BarChart2 className="h-5 w-5" /> },
+  { title: 'Team', href: '/team', icon: <Users className="h-5 w-5" /> },
   { title: 'Settings', href: '/settings', icon: <Settings className="h-5 w-5" /> },
 ];
 

@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Statistics from "./pages/Statistics";
+import Team from "./pages/Team";  // Import Team page
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
@@ -41,6 +42,14 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <Statistics />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/team" 
+              element={
+                <ProtectedRoute>
+                  <Team />
                 </ProtectedRoute>
               } 
             />
